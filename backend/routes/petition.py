@@ -1,10 +1,10 @@
 from flask import Blueprint, request, jsonify
 
-from models.petiton import Petition
+from models.petition import Petition
 
 petition_routes = Blueprint('petition_routes', __name__)
 
-@driving_school_routes.route('/register_petition', methods=['POST'])
+@petition_routes.route('/register_petition', methods=['POST'])
 def register_petition():
     try:
         petiton = Petition(

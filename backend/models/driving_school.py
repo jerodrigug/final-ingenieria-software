@@ -1,5 +1,5 @@
-from mongoengine import EmbeddedDocument, StringField, IntField, ListField, DictField
+from mongoengine import Document, EmbeddedDocument, StringField, IntField, ListField, DictField
 
-class DrivingSchool(EmbeddedDocument):
-	nit_driving_school = StringField(required=True)
+class DrivingSchool(Document):
+	nit_driving_school = StringField(required=True, unique=True)
 	name = StringField(required=True)

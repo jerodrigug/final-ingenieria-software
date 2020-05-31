@@ -22,20 +22,21 @@ def login():
 @user_routes.route('/register_user', methods=['POST'])
 def register():
     try:
+
         user = User(
             id_number=request.form['id_number'],
+            nit_driving_school=request.form['nit_driving_school'],
             name=request.form['name'],
             last_name=request.form['last_name'],
             email=request.form['email'],
             password=auth.encrypt_password(request.form['password']),
-            is_admin=request.form['is_admin'],
-            nit_driving_school=request.form['nit_driving_school']
+            is_admin=request.form['is_admin']
         )
 
         user.save()
 
-        return jsonify({'user': user})
+        return jsonify({'user': user}), 200
 
     except:
         
-        return jsonify({'msg': 'Email already taken'}), 500
+        return jsonify({'msg': 'No se ha podido registrar el usuario.'}), 500

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col" id="banner">
+    <img src="../assets/images/Imagen -5.png" class="img-fluid" alt="Responsive image" id="carimg">
+  </div>
+
+  <div  class="col" id="content">
+    <div class="container-fluid" id="centerBox">
+      <div *ngIf="!hidehome" class="container-fluid">
+        <h2>Ya Esta Registrada su Escuela?</h2>
+        <br>
+        <button (click)="loginfun()" type="button" class="btn btn-primary">Ingrese Aca</button>
+        <br>
+        <br>
+        <h2>De lo Contrario Resgistrese Aca</h2>
+        <br>
+        <button (click)="registerfun()" type="button" class="btn btn-primary">Registrarse</button>
+      </div>
+
+      <div class="container-fluid"  *ngIf="login">
+        <label>Correo</label>
+        <input [(ngModel)]="email" class="form-control" type="text">
+      
+        <label>Contrasena</label>
+        <input [(ngModel)]="password" class="form-control" type="text">
+      
+        <button (click)="submitLoginData()" type="button" class="btn btn-primary">Login</button>
+      
+      </div>
+
+      <div *ngIf="upload" class="container-fluid" id="documentUpload">
+        <table class="table">
+          <thead>
+            <tr>
+              
+            </tr>
+          </thead>
+        </table>   
+      </div>
+      
+      <app-register  *ngIf="register"></app-register>
+      
+      
+    </div>
+  </div>
+</div>
+

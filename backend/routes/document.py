@@ -77,6 +77,8 @@ def authenticate_document():
 
 			return jsonify({'msg': 'No se ha podido autenticar el documento.'}), 500
 
+	return jsonify({'msg': 'No se ha podido autenticar el documento.'}), 500
+
 @document_routes.route('/documents', methods=['GET'])
 def get_all_documents():
 	return jsonify({'documents': EnterpriseDocument.objects()})

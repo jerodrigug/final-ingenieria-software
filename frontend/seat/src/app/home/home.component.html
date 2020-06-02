@@ -21,7 +21,7 @@
         <input [(ngModel)]="email" class="form-control" type="text">
       
         <label>Contrasena</label>
-        <input [(ngModel)]="password" class="form-control" type="text">
+        <input [(ngModel)]="password" class="form-control" type="password">
       
         <button (click)="submitLoginData()" type="button" class="btn btn-primary">Login</button>
       
@@ -31,10 +31,29 @@
         <table class="table">
           <thead>
             <tr>
-              
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Autenticado</th>
+              <th scope="col">Verificar</th>
             </tr>
           </thead>
-        </table>   
+          <tbody>
+            <tr *ngFor="let document of documentMetadata">
+              <th scope="row">1</th>
+              <td>{{document.name}}</td>
+              <td>{{document.date}}</td>
+              <td>{{document.location}}</td>
+              <td>{{document.aunthenticated}}</td>
+              <td>
+                <button (click)="verificarDocumento(document)" type="button" class="btn btn-primary">Verificar</button> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input [(ngModel)]="document" type="file" class="form-control-file"> 
+        <input type="submit" class="form-control" (click)="uploadDocument()">
       </div>
       
       <app-register  *ngIf="register"></app-register>

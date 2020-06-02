@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   register=false
   hidehome=false
   loginData:any
+  document:any
 
   email=""
   password=""
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   upload=false
 
   documentMetadata:any
+  nit=""
 
   constructor(private loginService:LoginService){}
 
@@ -54,12 +56,44 @@ export class HomeComponent implements OnInit {
 
           (res)=> {
             console.log(res)
-            this.documentMetadata=res
+            this.documentMetadata=res['documents']
           },
           (err)=> console.log(err)
 
         )
 
+      },
+      (err)=>console.log(err)
+    )
+
+  }
+
+  uploadDocument(){
+    const uploadForm=new FormData();
+    uploadForm.append("user_file",this.document);
+    uploadForm.append("nit_driving_school",this.nit);
+
+    this.loginService.uploadDoc(uploadForm).subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (err)=>console.log(err)
+    )
+
+  }
+
+  verificarDocumento(document){
+    const verifyForm=new FormData();
+    verifyForm.append("nit_driving_school",this.nit);
+    verifyForm.append("document_location",document.location);
+    verifyForm.append("document_name",document.name);
+
+    console.log(document.location)
+    console.log("hola")
+
+    this.loginService.verificarDocumento(verifyForm).subscribe(
+      (res)=>{
+        console.log(res)
       },
       (err)=>console.log(err)
     )

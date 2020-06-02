@@ -9,7 +9,8 @@ export class LoginService {
 
   getDocumentsUrl="http://127.0.0.1:5000/documents"
   loginUrl="http://127.0.0.1:5000/login"
-
+  uploadDocUrl="http://127.0.0.1:5000/upload_unauthenticated_document"
+  verificarDocumentoUrl="http://127.0.0.1:5000/authenticate_document"
 
   changeLoginStatus(loginForm){
      return this.httpClient.post(this.loginUrl,loginForm)
@@ -18,6 +19,15 @@ export class LoginService {
 
   getDocuments(){
     return this.httpClient.get(this.getDocumentsUrl)
+
+  }
+
+  uploadDoc(uploadForm){
+    return this.httpClient.post(this.uploadDocUrl,uploadForm)
+
+  }
+  verificarDocumento(verifyForm){
+    return this.httpClient.post(this.verificarDocumentoUrl,verifyForm)
 
   }
 }
